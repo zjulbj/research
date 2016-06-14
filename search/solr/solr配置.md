@@ -56,3 +56,16 @@ my.custom.prop=edismax
 最大并发线程数，当索引文档的线程达到这个阈值，后续线程会等待。
 
 - mergeFactor
+
+##JVM Settings
+###Choosing Memory Heap Settings
+
+- -Xms
+heap内存的初始大小。如果不够，heap可以自动增长。
+但是应用需要花更多时间初始化。
+设大一点，避免了heap扩展的开销。
+- -Xmx
+  heap内存能扩展的最大大小。
+
+
+ 
