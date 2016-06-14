@@ -1,4 +1,4 @@
-#solr配置优化
+#solr配置
 ##solrconfig.xml
 `solrconfig.xml`里面有很多参数配置,主要有：
 
@@ -42,4 +42,17 @@ my.custom.prop=edismax
 </lst>
 </requestHandler>
 ```
+##IndexConfig in SolrConfig
+`solrconfig.xml`中的`<indexConfig>`部分定义了lucence的底层行为。
 
+- ramBufferSizeMB
+最大缓冲内存，如果文档更新达到这个数(MB),更新会被刷入磁盘，会创建新的segments，触发merge
+
+- maxBufferedDocs
+最大缓冲文档数，作用和`ramBufferSizeMB`,只是从文档数的维度衡量。
+两者仍一条件达到就会触发flush。
+
+- maxIndexingThreads
+最大并发线程数，当索引文档的线程达到这个阈值，后续线程会等待。
+
+- mergeFactor
